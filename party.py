@@ -22,14 +22,29 @@ def is_mel(name, email):
     >>> is_mel("Mel Melitpolski", "mel@ubermelon.com")
     True
 
-    >>> is_mel("Mel Melitpol", "m@ubermelon.com")
+    test uppercase
+    >>> is_mel("MEL Melitpolski", "MEL@ubermelon.com")
+    True
+
+    test no last name
+    >>> is_mel("Mel", "mel@ubermelon.com")
+    True
+
+    >>> is_mel("Mal Malitpol", "m@ubermelon.com")
     False
 
     
     """
-
-    return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
-
+    if name.lower() == "mel melitpolski":
+        return True
+    if email.lower() == "mel@ubermelon.com":
+        return True
+    # so no melisandre
+    if "mel" == name[0:3].lower() and len(name) == 3:
+        return True
+    
+    return False
+    
 
 def most_and_least_common_type(treats):
     """Given list of treats, return most and least common treat types.
